@@ -33,5 +33,4 @@ export const addCar=(reqObj)=>async dispatch=>{
         dispatch({type: 'LOADING' , payload:false})
     }
       
-
 }
