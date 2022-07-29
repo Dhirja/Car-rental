@@ -33,6 +33,8 @@ export const addCar=(reqObj)=>async dispatch=>{
         dispatch({type: 'LOADING' , payload:false})
     }
       
+<<<<<<< HEAD
+=======
 
 }
 
@@ -74,4 +76,5 @@ export const deleteCar=(reqObj)=>async dispatch=>{
     }
       
 
+>>>>>>> 4099d5a2efbd1126b6eabb5c379eae7c61a4f2e3
 }
