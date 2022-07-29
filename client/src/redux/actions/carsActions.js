@@ -33,4 +33,48 @@ export const addCar=(reqObj)=>async dispatch=>{
         dispatch({type: 'LOADING' , payload:false})
     }
       
+<<<<<<< HEAD
+=======
+
+}
+
+export const editCar=(reqObj)=>async dispatch=>{
+
+    dispatch({type: 'LOADING' , payload:true})
+
+    try {
+         await axios.post('/api/cars/editcar' , reqObj)
+       
+         dispatch({type: 'LOADING' , payload:false})
+         message.success('Car details updated successfully')
+         setTimeout(() => {
+            window.location.href='/admin'
+         }, 500);
+    } catch (error) {
+        console.log(error)
+        dispatch({type: 'LOADING' , payload:false})
+    }
+      
+
+}
+
+export const deleteCar=(reqObj)=>async dispatch=>{
+
+    dispatch({type: 'LOADING' , payload:true})
+
+    try {
+         await axios.post('/api/cars/deletecar' , reqObj)
+       
+         dispatch({type: 'LOADING' , payload:false})
+         message.success('Car deleted successfully')
+         setTimeout(() => {
+            window.location.reload()
+         }, 500);
+    } catch (error) {
+        console.log(error)
+        dispatch({type: 'LOADING' , payload:false})
+    }
+      
+
+>>>>>>> 4099d5a2efbd1126b6eabb5c379eae7c61a4f2e3
 }
