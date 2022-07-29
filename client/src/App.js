@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+
 import {Route , BrowserRouter , Redirect} from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import BookingCar from './pages/BookingCar'
-import 'antd/dist/antd. ';
+import 'antd/dist/antd.css';
 import UserBookings from './pages/UserBookings';
 import AddCar from './pages/AddCar';
 import AdminHome from './pages/AdminHome';
@@ -13,10 +14,7 @@ import EditCar from './pages/EditCar';
 
 function App() {
   return (
-    <div className="App">
-
-         
-         
+    <div className="App">   
          <BrowserRouter>
              
              <ProtectedRoute path='/' exact component={Home} />
@@ -29,7 +27,6 @@ function App() {
              <ProtectedRoute path='/admin' exact component={AdminHome} />
          
          </BrowserRouter>
-
     </div>
   );
 }
