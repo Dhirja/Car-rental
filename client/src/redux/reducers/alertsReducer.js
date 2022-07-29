@@ -15,5 +15,5 @@ export const alertsReducer=(state=initialData , action)=>{
 
           default : return state
     }
-
+    
 }
