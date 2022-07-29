@@ -1,36 +1,43 @@
 import axios from "axios";
-import { message } from "antd";
-export const bookCar = (reqObj) => async (dispatch) => {
-  dispatch({ type: "LOADING", payload: true });
+import {message} from 'antd'
 
-  try {
-     await axios.post("/api/bookings/bookcar" , reqObj);
-
-    dispatch({ type: "LOADING", payload: false });
-    message.success("Your car booked successfully");
-    setTimeout(() => {
-      window.location.href='/userbookings'
-    }, 500);
-
+export const userLogin=(reqObj)=>async dispatch=>{
     
-  } catch (error) {
-    console.log(error);
-    dispatch({ type: "LOADING", payload: false });
-    message.error("Something went wrong , please try later");
-  }
-};
+    dispatch({type: 'LOADING' , payload:true})
 
-export const getAllBookings=()=>async dispatch=>{
+    try {
+        const response = await axios.post('/api/users/login' , reqObj)
+        localStorage.setItem('user' , JSON.stringify(response.data))
+        message.success('Login success')
+        dispatch({type: 'LOADING' , payload:false})
+        setTimeout(() => {
+            window.location.href='/'
+         
+        }, 500);
+    } catch (error) {
+        console.log(error)
+        message.error('Something went wrong')
+        dispatch({type: 'LOADING' , payload:false})
+    }
+}
 
-  dispatch({type: 'LOADING' , payload:true})
+export const userRegister=(reqObj)=>async dispatch=>{
+    
+    dispatch({type: 'LOADING' , payload:true})
 
-  try {
-      const response = await axios.get('/api/bookings/getallbookings')
-      dispatch({type: 'GET_ALL_BOOKINGS', payload:response.data})
-      dispatch({type: 'LOADING' , payload:false})
-  } catch (error) {
-      console.log(error)
-      dispatch({type: 'LOADING' , payload:false})
-  }
-
+    try {
+        const response = await axios.post('/api/users/register' , reqObj)
+        message.success('Registration successfull')
+        setTimeout(() => {
+            window.location.href='/login'
+         
+        }, 500);
+       
+        dispatch({type: 'LOADING' , payload:false})
+        
+    } catch (error) {
+        console.log(error)
+        message.error('Something went wrong')
+        dispatch({type: 'LOADING' , payload:false})
+    }
 }
